@@ -1,0 +1,22 @@
+
+<table>
+
+<tr>
+<% count=0 %>
+<% @cosmetics_gallery.each do |cosmetic|%>
+
+<% if (count % 3) == 0%>
+</tr>
+<tr>
+<% end %>
+<% count+=1 %>
+<td> 
+<%= image_tag cosmetic.header_image ,:height=>"300",:width=>"300" %></br>
+Name : <%= cosmetic.name %><br />
+Color :<%= cosmetic.colour %><br />
+Category : <%= cosmetic.category %><br />
+Price : <%= cosmetic.price %></br>
+<%= button_to 'Add to Cart', line_items_path(:store_id => cosmetic.id) %>  </td></br>
+<% end %>
+</tr>
+</table>

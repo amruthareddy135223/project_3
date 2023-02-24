@@ -1,0 +1,41 @@
+<br/>
+<div class="center_hi">
+Do u want to go to home? <button><strong><a href="/home/index"> Home</a></strong><br/></button></br>
+Do you want gallery? <button><strong><a href="/gallery/index"> Gallery </a></strong><br/></button>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Stores</h1>
+
+<table border=1>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Description</th>
+      <th>Colour</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stores.each do |store| %>
+      <tr>
+        <td><%= store.name %></td>
+        <td><%= store.category %></td>
+        <td><%= store.description %></td>
+        <td><%= store.colour %></td>
+        <td><%= store.price %></td>
+        <td><%= link_to 'Show', store %></td>
+        <td><%= link_to 'Edit', edit_store_path(store) %></td>
+        <td><%= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Store', new_store_path %>
+</div>

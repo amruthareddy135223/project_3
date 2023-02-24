@@ -1,0 +1,226 @@
+</br>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CosmeticsApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
+<p class="navbar-text float-top">
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.
+  <button><%= link_to "Edit profile", edit_user_registration_path, class: "navbar-link" %> </button>|
+  <button><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-link"  %></button>
+<% else %>
+  <button><%= link_to "Sign up", new_user_registration_path, class: "navbar-link"  %></button> |
+  <button><%= link_to "Login", new_user_session_path, class: "navbar-link"  %></button>
+<% end %>
+</p>
+
+
+<% if session[:admin]%>
+				<button><a href="/admin/logout">Admin logout</a></button>
+		<% else %>
+				<button><a href= "admin/login">Admin login</a></button>
+		<% end %>
+
+    <%= form_for(:search,:url=>"/gallery/search") do |f| %>
+      Search <input type="text" name="search">
+      <input type="submit" value="Go">
+  <% end %>
+
+<div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="index.html">
+            <img src="/assets/p10.png" alt="" /><span>
+              COLOUR ME PRETTY
+            </span>
+          </a>
+
+          <div class="navbar-collapse" id="">
+            <div class="container">
+              <div class=" mr-auto flex-column flex-lg-row align-items-center">
+                <ul class="navbar-nav justify-content-between ">
+                  <div class="d-none d-lg-flex">
+                    <li class="nav-item">
+                      <a class="nav-link" href="fruit.html">
+                        Customer Number : 01234567890</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="service.html">
+                        kanna@gmail.com
+                      </a>
+                    </li>
+                  </div>
+                  <div class=" d-none d-lg-flex">
+                    <li class="nav-item">
+                      <a class="nav-link" href="http://localhost:3000/users/sign_up">
+                        Login / Register
+                      </a>
+                    </li>
+                    <form class="form-inline my-2 ml-5 mb-3 mb-lg-0">
+                      <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+                    </form>
+                  </div>
+                </ul>
+              </div>
+            </div>
+
+            <div class="custom_menu-btn">
+              <button onclick="openNav()"></button>
+            </div>
+            <div id="myNav" class="overlay">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+              <div class="overlay-content">
+                <a href="index.html">HOME</a>
+                <a href="product.html">PRODUCTS</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class=" slider_section position-relative">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="slider_item-box">
+              <div class="slider_item-container">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="offset-md-2 col-md-4">
+                      <div class="slider_item-detail">
+                        <div>
+                          <h2 class="slider_heading">
+                            240$ OFF <br />
+                            First order
+                          </h2>
+                          <p>
+                          Nail polish (also known as nail varnish or nail enamel) is a lacquer that can be applied to the human fingernail or toenails to decorate and protect the nail plates. 
+                          The formula has been revised repeatedly to enhance its decorative properties and to suppress cracking or peeling
+                          </p>
+                          <div class="d-flex">
+                            <a href="" class="slider_btn">
+                              Order Now
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="hero_img-box">
+                        <img src="/assets/hero.png" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="slider_item-box">
+              <div class="slider_item-container">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="offset-md-2 col-md-4">
+                      <div class="slider_item-detail">
+                        <div>
+                          <h2 class="slider_heading">
+                            50% OFF <br />
+                            First order
+                          </h2>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore
+                            et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nis
+                          </p>
+                          <div class="d-flex">
+                            <a href="" class="slider_btn">
+                              Order Now
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="hero_img-box">
+                        <img src="/assets/hero.png" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="slider_item-box">
+              <div class="slider_item-container">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="offset-md-2 col-md-4">
+                      <div class="slider_item-detail">
+                        <div>
+                          <h2 class="slider_heading">
+                            50% OFF <br />
+                            First order
+                          </h2>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore
+                            et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nis
+                          </p>
+                          <div class="d-flex">
+                            <a href="" class="slider_btn">
+                              Order Now
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="hero_img-box">
+                        <img src="/assets/hero.png" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- end slider section -->
+  </div>
+  
+   <%= yield %>
+   
+  
+  
+  </body>
+  
+  
+  </html>
+  
